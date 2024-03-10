@@ -51,6 +51,14 @@
 
 @media (max-width: 768px) {
 
+  .slider_section .box .img-box {
+    margin: 0 7%;
+}
+
+  .slider_section .box .img-box img {
+    width: 100%;
+  }
+
   .about_section .detail-box {
     padding: 0;
     margin-bottom: 45px;
