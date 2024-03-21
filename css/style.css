@@ -150,7 +150,7 @@ a:focus {
 }
 
 .custom_nav-container {
-    z-index: 99999;
+    z-index: 1000;
     padding-top: 20px;
     -webkit-box-align: end;
     -ms-flex-align: end;
@@ -267,19 +267,27 @@ a:focus {
     margin: 15px 0 20px;
 }
 
-.slider_section .slider_form form input {
+.custom-input-div {
+    margin-bottom: 15px;
+}
+
+.slider_section .slider_form form input,
+.slider_section .slider_form form select,
+.custom-input {
     width: 100%;
     height: 40px;
     border: none;
     outline: none;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     padding-left: 15px;
 }
 
-.slider_section .slider_form form .btm_input {
+.slider_section .slider_form .btm_input {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .slider_section .slider_form form .btm_input input {
@@ -288,15 +296,23 @@ a:focus {
     margin-right: 10px;
 }
 
-.slider_section .slider_form form .btm_input button {
+.slider_section .slider_form form .btm_input button,
+.primary_btn,
+.secondary_btn
+{
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
-    min-width: 116px;
+    max-width: 116px;
+    height: 40px;
     border: none;
     outline: none;
     background-color: #f7c621;
     color: #ffffff;
+}
+
+.secondary_btn {
+    background-color: #5a6268;
 }
 
 .slider_section .carousel-indicators {
@@ -1029,6 +1045,41 @@ a:focus {
     display: none;
 }
 
+.error {
+    color: red;
+}
+
+.reservation-fare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 0 50px;
+    border: 2px solid white;
+    margin-bottom: 15px;
+}
+
+.reservation-fare__value {
+    color: #f7c621;
+}
+
+.reservation-modal .modal-content {
+    background-color: #282828;
+    color: white;
+    border-radius: 10px;
+}
+
+.reservation-modal .modal-body {
+    padding: 3rem;
+}
+
+.reservation-modal .modal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 2rem;
+}
 /*animation*/
 @keyframes click-to-call-animation {
     0% {
@@ -1042,115 +1093,4 @@ a:focus {
     100% {
         box-shadow: 0 0 0 50px rgba(22, 22, 22, 0);
     }
-}
-
-.stepper .nav-tabs {
-  position: relative;
-}
-.stepper .nav-tabs > li {
-  width: 25%;
-  position: relative;
-}
-.stepper .nav-tabs > li:after {
-  content: '';
-  position: absolute;
-  background: #f1f1f1;
-  display: block;
-  width: 100%;
-  height: 5px;
-  top: 30px;
-  left: 50%;
-  z-index: 1;
-}
-.stepper .nav-tabs > li.completed::after {
-  background: #34bc9b;
-}
-.stepper .nav-tabs > li:last-child::after {
-  background: transparent;
-}
-.stepper .nav-tabs > li.active:last-child .round-tab {
-  background: #34bc9b;
-}
-.stepper .nav-tabs > li.active:last-child .round-tab::after {
-  content: '✔';
-  color: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  top: 0;
-  display: block;
-}
-.stepper .nav-tabs [data-toggle='tab'] {
-  width: 25px;
-  height: 25px;
-  margin: 20px auto;
-  border-radius: 100%;
-  border: none;
-  padding: 0;
-  color: #f1f1f1;
-}
-.stepper .nav-tabs [data-toggle='tab']:hover {
-  background: transparent;
-  border: none;
-}
-.stepper .nav-tabs > .active > [data-toggle='tab'], .stepper .nav-tabs > .active > [data-toggle='tab']:hover, .stepper .nav-tabs > .active > [data-toggle='tab']:focus {
-  color: #34bc9b;
-  cursor: default;
-  border: none;
-}
-.stepper .tab-pane {
-  position: relative;
-  padding-top: 50px;
-}
-.stepper .round-tab {
-  width: 25px;
-  height: 25px;
-  line-height: 22px;
-  display: inline-block;
-  border-radius: 25px;
-  background: #fff;
-  border: 2px solid #34bc9b;
-  color: #34bc9b;
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  text-align: center;
-  font-size: 14px;
-}
-.stepper .completed .round-tab {
-  background: #34bc9b;
-}
-.stepper .completed .round-tab::after {
-  content: '✔';
-  color: #fff;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  top: 0;
-  display: block;
-}
-.stepper .active .round-tab {
-  background: #fff;
-  border: 2px solid #34bc9b;
-}
-.stepper .active .round-tab:hover {
-  background: #fff;
-  border: 2px solid #34bc9b;
-}
-.stepper .active .round-tab::after {
-  display: none;
-}
-.stepper .disabled .round-tab {
-  background: #fff;
-  color: #f1f1f1;
-  border-color: #f1f1f1;
-}
-.stepper .disabled .round-tab:hover {
-  color: #4dd3b6;
-  border: 2px solid #a6dfd3;
-}
-.stepper .disabled .round-tab::after {
-  display: none;
 }

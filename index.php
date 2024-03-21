@@ -1,3 +1,5 @@
+<?php include 'back/data.php' ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -106,15 +108,28 @@
                             <h4>
                                 Get A Taxi Now
                             </h4>
-                            <form action="">
-                                <input type="text" placeholder="Car Type">
-                                <input type="text" placeholder="Pick Up Location">
-                                <input type="text" placeholder="Drop Location">
-                                <div class="btm_input">
-                                    <input type="text" placeholder="Your Phone Number">
-                                    <button onclick="reserveTaxiPage()">Book Now</button>
-                                </div>
-                            </form>
+                            <div class="custom-input-div">
+                                <select class="custom-input" id="service_type">
+                                    <option value="" disabled selected>Service Type</option>
+                                    <?php foreach($service_types as $service_type) {?>
+                                        <option value="<?php echo $service_type['id'] ?>">
+                                            <?php echo $service_type['name_en'] ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                                <small id="service_type_error" class="error"></small>
+                            </div>
+                            <div class="custom-input-div">
+                                <input class="custom-input" id="start_location" type="text" placeholder="Pick Up Location">
+                                <small id="start_location_error" class="error"></small>
+                            </div>
+                            <div class="custom-input-div">
+                                <input class="custom-input" id="end_location" type="text" placeholder="Drop Location">
+                                <small id="end_location_error" class="error"></small>
+                            </div>
+                            <div class="btm_input">
+                                <button class="primary_btn" type="button" onclick="openFareModal()">Book Now</button>
+                            </div>
                             <h4>
                                 OR
                             </h4>
@@ -486,12 +501,141 @@
     <!-- end why section -->
 
     <?php include 'sections/footer.php' ?>
+
+    <!---------- Reserve Modal ------------>
+    <div class="modal reservation-modal" tabindex="-1" role="dialog" id="reservation_modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="reservation-fare">
+                        <h2 class="m-0">
+                            <span class="reservation-fare__label">FARE:</span>
+                            <span class="reservation-fare__value" id="fare_value">50</span><span class="reservation-fare__value">$</span>
+                        </h2>
+                    </div>
+                    <div class="custom-input-div">
+                        <input class="custom-input" id="user_name" type="text" placeholder="Your Name">
+                        <small id="user_name_error" class="error"></small>
+                    </div>
+                    <div class="custom-input-div">
+                        <input class="custom-input" id="user_phone" type="text" placeholder="Your Phone Number">
+                        <small id="user_phone_error" class="error"></small>
+                    </div>
+                    <div class="custom-input-div">
+                        <input class="custom-input" id="user_email" type="text" placeholder="Your Email">
+                        <small id="user_email_error" class="error"></small>
+                    </div>
+                    <div class="custom-input-div">
+                        <input class="custom-input" id="user_notes" type="text" placeholder="Note for The Driver">
+                        <small id="user_notes_error" class="error"></small>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" class="primary_btn" onclick="addReserve()">Pay</button>
+                        <button type="button" class="secondary_btn" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <?php include 'sections/scripts.php' ?>
 
     <script>
-        function reserveTaxiPage() {
-            window.location.href = 'reserve';
+        function openFareModal() {
+            //check form value errors
+            service_type = $('#service_type').val();
+            start_location = $('#start_location').val();
+            end_location = $('#end_location').val();
+            errors = 0;
+            if(service_type == null || service_type == '') {
+                errors++;
+                $('#service_type_error').html('Please choose service type')
+            }
+
+            if(start_location == '') {
+                errors++;
+                $('#start_location_error').html('please choose pick up location')
+            }
+
+            if(end_location == '') {
+                errors++;
+                $('#end_location_error').html('please choose drop location')
+            }
+
+            if(errors > 0)
+                return
+
+            $('#service_type_error').html('');
+            $('#start_location_error').html('');
+            $('#end_location_error').html('');
+
+            //end
+
+            //calc fare
+            $.ajax({
+                url: "back/calcFare.php", 
+                data: {
+                    'service_type': service_type
+                },
+                success: function(result){
+                    console.log(result);
+                    $("#fare_value").html(result);
+                }
+            });
+            //end
+
+            $('#reservation_modal').modal();
+        }
+
+        function addReserve() {
+
+            //check form value errors
+            service_type = $('#service_type').val();
+            start_location = $('#start_location').val();
+            end_location = $('#end_location').val();
+            user_name = $('#user_name').val();
+            user_phone = $('#user_phone').val();
+            user_email = $('#user_email').val();
+            user_notes = $('#user_notes').val();
+            errors = 0;
+
+            if(user_name == '') {
+                errors++;
+                $('#user_name_error').html('Please enter your name')
+            }
+
+            if(user_phone == '') {
+                errors++;
+                $('#user_phone_error').html('Please enter your phone number')
+            }
+
+            if(user_email == '') {
+                errors++;
+                $('#user_email_error').html('Please enter your email')
+            }
+            console.log(errors);
+            if(errors > 0)
+                return;
+            //end
+
+            //add reserve
+            $.ajax({
+                url: "back/addReserve.php", 
+                type: 'POST',
+                data: {
+                    'service_type': service_type,
+                    'start_location': start_location,
+                    'end_location': end_location,
+                    'user_name': user_name,
+                    'user_phone': user_phone,
+                    'user_email': user_email,
+                    'user_notes': user_notes
+                },
+                success: function(result){
+                    console.log('result: ',result);
+                }
+            });
+            //end
         }
     </script>
 </body>
