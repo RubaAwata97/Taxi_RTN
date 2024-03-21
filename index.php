@@ -1,40 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <!-- Basic -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <!-- Site Metas -->
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-
-    <title>TAXI</title>
-
-
-    <!-- slider stylesheet -->
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-    <!-- Icons style -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-    <!-- fonts style -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
-</head>
+<?php include 'sections/head.php' ?>
 
 <body>
 
@@ -132,11 +99,6 @@
                                 </div>
                             </div>
 
-                            <div class="btn-box">
-                                <a href="#book-section" class="btn-1">
-                                    Try It!
-                                </a>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-5 " id="book-section">
@@ -150,7 +112,7 @@
                                 <input type="text" placeholder="Drop Location">
                                 <div class="btm_input">
                                     <input type="text" placeholder="Your Phone Number">
-                                    <button>Book Now</button>
+                                    <button onclick="reserveTaxiPage()">Book Now</button>
                                 </div>
                             </form>
                             <h4>
@@ -523,115 +485,15 @@
 
     <!-- end why section -->
 
-    <!-- info section -->
+    <?php include 'sections/footer.php' ?>
+    
+    <?php include 'sections/scripts.php' ?>
 
-    <section class="info_section layout_padding-top layout_padding2-bottom">
-        <div class="container">
-            <div class="box">
-                <div class="info_form">
-                    <h4>
-                        Subscribe Our Newsletter
-                    </h4>
-                    <form action="">
-                        <input type="text" placeholder="Enter your email">
-                        <div class="d-flex justify-content-end">
-                            <button>
-
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="info_links">
-                    <ul>
-                        <li class=" ">
-                            <a class="" href="#">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="">
-                            <a class="" href="#about-section"> About</a>
-                        </li>
-                        <li class="">
-                            <a class="" href="#services-section"> Services </a>
-                        </li>
-                        <li class="">
-                            <a class="" href="#contact-us-section">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="info_social">
-                    <div>
-                        <a href="">
-                            <img src="images/fb.png" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="images/twitter.png" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="images/linkedin.png" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="">
-                            <img src="images/instagram.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- end info section -->
-
-    <!-- footer section -->
-    <section class="container-fluid footer_section">
-        <div class="container">
-            <p>
-                &copy; <span id="current-year"></span> All Rights Reserved
-                <script>
-                    document.getElementById('current-year').innerHTML = new Date().getFullYear();;
-                </script>
-            </p>
-        </div>
-    </section>
-    <!-- footer section -->
-
-    <!-- Float Buttons -->
-    <a class="click-to-call" href="tel:01008434175"><i class="fa-solid fa-phone"></i></a>
-
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+    <script>
+        function reserveTaxiPage() {
+            window.location.href = 'reserve';
+        }
     </script>
-
-
-    <!-- owl carousel script -->
-    <script type="text/javascript">
-        $(".owl-carousel").owlCarousel({
-            loop: true,
-            margin: 20,
-            navText: [],
-            autoplay: true,
-            autoplayHoverPause: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                1000: {
-                    items: 2
-                }
-            }
-        });
-    </script>
-    <!-- end owl carousel script -->
-
 </body>
 
 </html>
