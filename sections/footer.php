@@ -8,13 +8,14 @@
                     Subscribe Our Newsletter
                 </h4>
                 <form action="">
-                    <input type="text" placeholder="Enter your email">
+                    <input id="subscriber_email" type="text" placeholder="Enter your email">
                     <div class="d-flex justify-content-end">
-                        <button>
+                        <button type="button" onclick="addSubscriber()">
 
                         </button>
                     </div>
                 </form>
+                <small id="subscriber_email_error" class="error"></small>
             </div>
             <div class="info_links">
                 <ul>

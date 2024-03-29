@@ -406,10 +406,19 @@
                             Get In touch
                         </h4>
                         <form action="">
-                            <input type="text" placeholder="Name">
-                            <input type="text" placeholder="Phone Number">
-                            <input type="text" placeholder="Message" class="message_input">
-                            <button>Send</button>
+                            <div class="custom-input-div">
+                                <input class="mb-0" id="message_name" type="text" placeholder="Name">
+                                <small id="message_name_error" class="error"></small>
+                            </div>
+                            <div class="custom-input-div">
+                                <input class="mb-0" id="message_phone"  type="text" placeholder="Phone Number">
+                                <small id="message_phone_error" class="error"></small>
+                            </div>
+                            <div class="custom-input-div">
+                                <input id="message_message"  type="text" placeholder="Message" class="message_input mb-0">
+                                <small id="message_message_error" class="error"></small>
+                            </div>
+                            <button id="send_button" type="button" onclick="addMessage()">Send</button>
                         </form>
                     </div>
                 </div>
@@ -530,114 +539,17 @@
                         <small id="user_notes_error" class="error"></small>
                     </div>
                     <div class="modal-buttons">
-                        <button type="button" class="primary_btn" onclick="addReserve()">Pay</button>
+                        <button type="button" class="primary_btn" onclick="addReserve()" id="pay_button">Pay</button>
                         <button type="button" class="secondary_btn" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <?php include 'sections/alerts.php' ?>
+
     <?php include 'sections/scripts.php' ?>
-
-    <script>
-        function openFareModal() {
-            //check form value errors
-            service_type = $('#service_type').val();
-            start_location = $('#start_location').val();
-            end_location = $('#end_location').val();
-            errors = 0;
-            if(service_type == null || service_type == '') {
-                errors++;
-                $('#service_type_error').html('Please choose service type')
-            }
-
-            if(start_location == '') {
-                errors++;
-                $('#start_location_error').html('please choose pick up location')
-            }
-
-            if(end_location == '') {
-                errors++;
-                $('#end_location_error').html('please choose drop location')
-            }
-
-            if(errors > 0)
-                return
-
-            $('#service_type_error').html('');
-            $('#start_location_error').html('');
-            $('#end_location_error').html('');
-
-            //end
-
-            //calc fare
-            $.ajax({
-                url: "back/calcFare.php", 
-                data: {
-                    'service_type': service_type
-                },
-                success: function(result){
-                    console.log(result);
-                    $("#fare_value").html(result);
-                }
-            });
-            //end
-
-            $('#reservation_modal').modal();
-        }
-
-        function addReserve() {
-
-            //check form value errors
-            service_type = $('#service_type').val();
-            start_location = $('#start_location').val();
-            end_location = $('#end_location').val();
-            user_name = $('#user_name').val();
-            user_phone = $('#user_phone').val();
-            user_email = $('#user_email').val();
-            user_notes = $('#user_notes').val();
-            errors = 0;
-
-            if(user_name == '') {
-                errors++;
-                $('#user_name_error').html('Please enter your name')
-            }
-
-            if(user_phone == '') {
-                errors++;
-                $('#user_phone_error').html('Please enter your phone number')
-            }
-
-            if(user_email == '') {
-                errors++;
-                $('#user_email_error').html('Please enter your email')
-            }
-            console.log(errors);
-            if(errors > 0)
-                return;
-            //end
-
-            //add reserve
-            $.ajax({
-                url: "back/addReserve.php", 
-                type: 'POST',
-                data: {
-                    'service_type': service_type,
-                    'start_location': start_location,
-                    'end_location': end_location,
-                    'user_name': user_name,
-                    'user_phone': user_phone,
-                    'user_email': user_email,
-                    'user_notes': user_notes
-                },
-                success: function(result){
-                    console.log('result: ',result);
-                }
-            });
-            //end
-        }
-    </script>
 </body>
 
 </html>
