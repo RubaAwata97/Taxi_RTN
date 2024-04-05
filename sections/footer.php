@@ -5,10 +5,10 @@
         <div class="box">
             <div class="info_form">
                 <h4>
-                    Subscribe Our Newsletter
+                    <?php echo $labels['subscribe_our_newsletter'] ?>
                 </h4>
                 <form action="">
-                    <input id="subscriber_email" type="text" placeholder="Enter your email">
+                    <input id="subscriber_email" type="text" placeholder="<?php echo $labels['enter_your_email'] ?>">
                     <div class="d-flex justify-content-end">
                         <button type="button" onclick="addSubscriber()">
 
@@ -20,16 +20,16 @@
             <div class="info_links">
                 <ul>
                     <li class=" ">
-                        <a class="" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="" href="#"><?php echo $labels['home'] ?> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="">
-                        <a class="" href="#about-section"> About</a>
+                        <a class="" href="#about-section"> <?php echo $labels['about'] ?></a>
                     </li>
                     <li class="">
-                        <a class="" href="#services-section"> Services </a>
+                        <a class="" href="#services-section"> <?php echo $labels['services'] ?> </a>
                     </li>
                     <li class="">
-                        <a class="" href="#contact-us-section">Contact Us</a>
+                        <a class="" href="#contact-us-section"><?php echo $labels['contact_us'] ?></a>
                     </li>
                 </ul>
             </div>
@@ -66,7 +66,7 @@
 <section class="container-fluid footer_section">
     <div class="container">
         <p>
-            &copy; <span id="current-year"></span> All Rights Reserved
+            &copy; <span id="current-year"></span> <?php echo $labels['all_rights_reserved'] ?>
             <script>
                 document.getElementById('current-year').innerHTML = new Date().getFullYear();;
             </script>

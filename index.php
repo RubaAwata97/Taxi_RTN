@@ -1,5 +1,15 @@
 <?php include 'back/data.php' ?>
+<?php
+    session_start();
 
+    $lang = 'en';
+    if(isset($_GET['lang']))
+        $lang = $_GET['lang'];
+        
+    $_SESSION['lang'] = $lang;
+
+    include 'lang/' . $_SESSION['lang']  . '.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -27,20 +37,27 @@
                         <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav  ">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="#"><?php echo $labels['home'] ?> <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#about-section"> About</a>
+                                    <a class="nav-link" href="#about-section"> <?php echo $labels['about'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#services-section"> Services </a>
+                                    <a class="nav-link" href="#services-section"> <?php echo $labels['services'] ?> </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#contact-us-section">Contact Us</a>
+                                    <a class="nav-link" href="#contact-us-section"><?php echo $labels['contact_us'] ?></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#contact-us-section"><img class="change-lang-icon"
-                                            src="images/English.png"></a>
+                                    <?php if($_SESSION['lang'] == 'du') {?>
+                                        <a class="nav-link" href="?lang=en">
+                                            <img class="change-lang-icon" src="images/English.png">
+                                        </a>
+                                    <?php } else {?>
+                                        <a class="nav-link" href="?lang=du">
+                                            <img class="change-lang-icon" src="images/Dutch.png">
+                                        </a>
+                                    <?php }?>
                                 </li>
                             </ul>
                         </div>
@@ -57,7 +74,7 @@
                         <div class="box">
                             <div class="detail-box">
                                 <h4>
-                                    Welcome to
+                                    <?php echo $labels['welcome_to'] ?>
                                 </h4>
                                 <h1>
                                     TAXI
@@ -106,11 +123,11 @@
                     <div class="col-lg-4 col-md-5 " id="book-section">
                         <div class="slider_form">
                             <h4>
-                                Get A Taxi Now
+                                <?php echo $labels['get_taxi']?>
                             </h4>
                             <div class="custom-input-div">
                                 <select class="custom-input" id="service_type">
-                                    <option value="" disabled selected>Service Type</option>
+                                    <option value="" disabled selected><?php echo $labels['service_type'] ?></option>
                                     <?php foreach($service_types as $service_type) {?>
                                         <option value="<?php echo $service_type['id'] ?>">
                                             <?php echo $service_type['name_en'] ?>
@@ -120,18 +137,18 @@
                                 <small id="service_type_error" class="error"></small>
                             </div>
                             <div class="custom-input-div">
-                                <input class="custom-input" id="start_location" type="text" placeholder="Pick Up Location">
+                                <input class="custom-input" id="start_location" type="text" placeholder="<?php echo $labels['pick_up_location'] ?>">
                                 <small id="start_location_error" class="error"></small>
                             </div>
                             <div class="custom-input-div">
-                                <input class="custom-input" id="end_location" type="text" placeholder="Drop Location">
+                                <input class="custom-input" id="end_location" type="text" placeholder="<?php echo $labels['drop_location'] ?>">
                                 <small id="end_location_error" class="error"></small>
                             </div>
                             <div class="btm_input">
-                                <button class="primary_btn" type="button" onclick="openFareModal()">Book Now</button>
+                                <button class="primary_btn" type="button" onclick="openFareModal()"><?php echo $labels['book_now'] ?></button>
                             </div>
                             <h4>
-                                OR
+                                <?php echo $labels['or'] ?>
                             </h4>
                             <div class="book-form__call-us-buttons">
                                 <div class="book-form__call-us-buttons-item">
@@ -161,17 +178,14 @@
                 <div class="col-lg-4 col-md-5 offset-lg-2 offset-md-1">
                     <div class="detail-box">
                         <h2>
-                            About <br>
-                            Taxi Company
+                            <?php echo $labels['about'] ?> <br>
+                            Taxi <?php echo $labels['company'] ?>
                         </h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniaLorem ipsum dolor sit amet, consectetur
-                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniamm
+                            <?php echo $labels['about_description'] ?>
                         </p>
                         <a href="#book-section">
-                            Try It!
+                            <?php echo $labels['try_it'] ?>
                         </a>
                     </div>
                 </div>
@@ -192,8 +206,8 @@
         <div class="container">
             <div class="heading_container">
                 <h2>
-                    Our <br>
-                    Taxi Services
+                    <?php echo $labels['our'] ?> <br>
+                    <?php echo $labels['taxi_services'] ?>
                 </h2>
             </div>
             <div class="service_container">
@@ -203,13 +217,13 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Private Driver
+                            <?php echo $labels['private_driver'] ?>
                         </h5>
                         <p>
-                            Lorem ipsum dolor sit ame
+                            <?php echo $labels['private_driver_description'] ?>
                         </p>
                         <a href="#book-section">
-                            Try It!
+                            <?php echo $labels['try_it'] ?>
                         </a>
                     </div>
                 </div>
@@ -219,13 +233,13 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Airport Transfer
+                            <?php echo $labels['airport_transfer'] ?>
                         </h5>
                         <p>
-                            Lorem ipsum dolor sit ame
+                            <?php echo $labels['airport_transfer_description'] ?>
                         </p>
                         <a href="#book-section">
-                            Try It!
+                            <?php echo $labels['try_it'] ?>
                         </a>
                     </div>
                 </div>
@@ -235,13 +249,13 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Luggage Transfer
+                            <?php echo $labels['luggage_transfer'] ?>
                         </h5>
                         <p>
-                            Lorem ipsum dolor sit ame
+                            <?php echo $labels['luggage_transfer_description'] ?>
                         </p>
                         <a href="#book-section">
-                            Try It!
+                            <?php echo $labels['try_it'] ?>
                         </a>
                     </div>
                 </div>
@@ -257,8 +271,8 @@
         <div class="container">
             <div class="heading_container">
                 <h2>
-                    Our <br>
-                    Service Types
+                    <?php echo $labels['our'] ?> <br>
+                    <?php echo $labels['service_types'] ?>
                 </h2>
             </div>
             <div class="news_container">
@@ -268,18 +282,18 @@
                     </div>
                     <div class="detail-box">
                         <h6>
-                            Business Class
+                            <?php echo $labels['service_type_1'] ?>
                         </h6>
                         <div class="service-type__counts">
                             <div class="service-type__counts-item">
-                                <i class="fa-solid fa-user"></i><span>max. 3</span>
+                                <i class="fa-solid fa-user"></i><span><?php echo $labels['max'] ?>. 4</span>
                             </div>
                             <div class="service-type__counts-item">
-                                <i class="fa-solid fa-suitcase"></i><span>max. 2</span>
+                                <i class="fa-solid fa-suitcase"></i><span><?php echo $labels['max'] ?>. 3</span>
                             </div>
                         </div>
                         <p>
-                            Most popular - Mercedes-Benz E-Class or similar
+                            <?php echo $labels['service_type_1_description'] ?>
                         </p>
                     </div>
                 </div>
@@ -289,18 +303,18 @@
                     </div>
                     <div class="detail-box">
                         <h6>
-                            Business Van/SUV
+                            <?php echo $labels['service_type_2'] ?>
                         </h6>
                         <div class="service-type__counts">
                             <div class="service-type__counts-item">
-                                <i class="fa-solid fa-user"></i><span>max. 5</span>
+                                <i class="fa-solid fa-user"></i><span><?php echo $labels['max'] ?>. 8</span>
                             </div>
                             <div class="service-type__counts-item">
-                                <i class="fa-solid fa-suitcase"></i><span>max. 5</span>
+                                <i class="fa-solid fa-suitcase"></i><span><?php echo $labels['max'] ?>. 6</span>
                             </div>
                         </div>
                         <p>
-                            More spacious - Mercedes-Benz V-Class or similar
+                            <?php echo $labels['service_type_2_description'] ?>
                         </p>
                     </div>
                 </div>
@@ -310,18 +324,18 @@
                     </div>
                     <div class="detail-box">
                         <h6>
-                            First Class
+                            <?php echo $labels['service_type_3'] ?>
                         </h6>
                         <div class="service-type__counts">
                             <div class="service-type__counts-item">
-                                <i class="fa-solid fa-user"></i><span>max. 3</span>
+                                <i class="fa-solid fa-user"></i><span><?php echo $labels['max'] ?>. 4</span>
                             </div>
                             <div class="service-type__counts-item">
-                                <i class="fa-solid fa-suitcase"></i><span>max. 2</span>
+                                <i class="fa-solid fa-suitcase"></i><span><?php echo $labels['max'] ?>. 3</span>
                             </div>
                         </div>
                         <p>
-                            Most luxurious - Mercedes-Benz S-Class or similar
+                            <?php echo $labels['service_type_3_description'] ?>
                         </p>
                     </div>
                 </div>
@@ -337,9 +351,9 @@
         <div class="container">
             <div class="heading_container">
                 <h2>
-                    What <br>
-                    Client <br>
-                    Says
+                    <?php echo $labels['what'] ?> <br>
+                    <?php echo $labels['client'] ?> <br>
+                    <?php echo $labels['says'] ?>
                 </h2>
             </div>
             <div class="client_container">
@@ -352,11 +366,10 @@
                                 </div>
                                 <div class="detail-box">
                                     <h3>
-                                        Aliqua
+                                        Sarah
                                     </h3>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et amet, consectetur adipiscing
+                                        <?php echo $labels['client_1_description'] ?>
                                     </p>
                                     <img src="images/quote.png" alt="">
                                 </div>
@@ -369,11 +382,10 @@
                                 </div>
                                 <div class="detail-box">
                                     <h3>
-                                        Liqua
+                                        Gaby
                                     </h3>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et amet, consectetur adipiscing
+                                        <?php echo $labels['client_2_description'] ?>
                                     </p>
                                     <img src="images/quote.png" alt="">
                                 </div>
@@ -393,8 +405,8 @@
         <div class="container">
             <div class="heading_container">
                 <h2>
-                    Any Problems <br>
-                    Any Questions
+                    <?php echo $labels['any_problems'] ?> <br>
+                    <?php echo $labels['any_questions'] ?>
                 </h2>
             </div>
         </div>
@@ -403,22 +415,22 @@
                 <div class="col-md-5  offset-md-1">
                     <div class="contact_form">
                         <h4>
-                            Get In touch
+                            <?php echo $labels['get_in_touch'] ?>
                         </h4>
                         <form action="">
                             <div class="custom-input-div">
-                                <input class="mb-0" id="message_name" type="text" placeholder="Name">
+                                <input class="mb-0" id="message_name" type="text" placeholder="<?php echo $labels['name'] ?>">
                                 <small id="message_name_error" class="error"></small>
                             </div>
                             <div class="custom-input-div">
-                                <input class="mb-0" id="message_phone"  type="text" placeholder="Phone Number">
+                                <input class="mb-0" id="message_phone"  type="text" placeholder="<?php echo $labels['phone_number'] ?>">
                                 <small id="message_phone_error" class="error"></small>
                             </div>
                             <div class="custom-input-div">
-                                <input id="message_message"  type="text" placeholder="Message" class="message_input mb-0">
+                                <input id="message_message"  type="text" placeholder="<?php echo $labels['message'] ?>" class="message_input mb-0">
                                 <small id="message_message_error" class="error"></small>
                             </div>
-                            <button id="send_button" type="button" onclick="addMessage()">Send</button>
+                            <button id="send_button" type="button" onclick="addMessage()"><?php echo $labels['send'] ?></button>
                         </form>
                     </div>
                 </div>
@@ -438,8 +450,8 @@
         <div class="container">
             <div class="heading_container">
                 <h2>
-                    Why <br>
-                    Choose Us
+                    <?php echo $labels['why'] ?> <br>
+                    <?php echo $labels['choose_us'] ?>
                 </h2>
             </div>
             <div class="why_container">
@@ -450,11 +462,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Best Drivers
+                            <?php echo $labels['best_drivers'] ?>
                         </h5>
                         <p>
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its
+                            <?php echo $labels['best_drivers_description'] ?>
                         </p>
                     </div>
                 </div>
@@ -465,11 +476,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Safe and Secure
+                            <?php echo $labels['safe_and_secure'] ?>
                         </h5>
                         <p>
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its
+                            <?php echo $labels['safe_and_secure_description'] ?>
                         </p>
                     </div>
                 </div>
@@ -480,11 +490,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            24x7 support
+                            <?php echo $labels['24x7_support'] ?>
                         </h5>
                         <p>
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its
+                            <?php echo $labels['24x7_support_description'] ?>
                         </p>
                     </div>
                 </div>
@@ -495,11 +504,10 @@
                     </div>
                     <div class="detail-box">
                         <h5>
-                            Affordable Price
+                            <?php echo $labels['affordable_price'] ?>
                         </h5>
                         <p>
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its
+                            <?php echo $labels['affordable_price_description'] ?>
                         </p>
                     </div>
                 </div>
@@ -518,29 +526,29 @@
                 <div class="modal-body">
                     <div class="reservation-fare">
                         <h2 class="m-0">
-                            <span class="reservation-fare__label">FARE:</span>
+                            <span class="reservation-fare__label"><?php echo $labels['fare'] ?>:</span>
                             <span class="reservation-fare__value" id="fare_value">50</span><span class="reservation-fare__value">$</span>
                         </h2>
                     </div>
                     <div class="custom-input-div">
-                        <input class="custom-input" id="user_name" type="text" placeholder="Your Name">
+                        <input class="custom-input" id="user_name" type="text" placeholder="<?php echo $labels['your_name'] ?>">
                         <small id="user_name_error" class="error"></small>
                     </div>
                     <div class="custom-input-div">
-                        <input class="custom-input" id="user_phone" type="text" placeholder="Your Phone Number">
+                        <input class="custom-input" id="user_phone" type="text" placeholder="<?php echo $labels['your_phone'] ?>">
                         <small id="user_phone_error" class="error"></small>
                     </div>
                     <div class="custom-input-div">
-                        <input class="custom-input" id="user_email" type="text" placeholder="Your Email">
+                        <input class="custom-input" id="user_email" type="text" placeholder="<?php echo $labels['your_email'] ?>">
                         <small id="user_email_error" class="error"></small>
                     </div>
                     <div class="custom-input-div">
-                        <input class="custom-input" id="user_notes" type="text" placeholder="Note for The Driver">
+                        <input class="custom-input" id="user_notes" type="text" placeholder="<?php echo $labels['note_for_driver'] ?>">
                         <small id="user_notes_error" class="error"></small>
                     </div>
                     <div class="modal-buttons">
-                        <button type="button" class="primary_btn" onclick="addReserve()" id="pay_button">Pay</button>
-                        <button type="button" class="secondary_btn" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="primary_btn" onclick="addReserve()" id="pay_button"><?php echo $labels['pay'] ?></button>
+                        <button type="button" class="secondary_btn" data-dismiss="modal"><?php echo $labels['cancel'] ?></button>
                     </div>
                 </div>
             </div>
@@ -550,6 +558,10 @@
     <?php include 'sections/alerts.php' ?>
 
     <?php include 'sections/scripts.php' ?>
+
+    <script>
+        var jsLabels = <?php echo json_encode( $labels ) ?>;
+    </script>
 </body>
 
 </html>

@@ -7,17 +7,17 @@ function openFareModal() {
     errors = 0;
     if (service_type == null || service_type == '') {
         errors++;
-        $('#service_type_error').html('Please choose service type')
+        $('#service_type_error').html(jsLabels['service_type_required_validation']);
     }
 
     if (start_location == '') {
         errors++;
-        $('#start_location_error').html('please choose pick up location')
+        $('#start_location_error').html(jsLabels['pick_up_location_required_validation']);
     }
 
     if (end_location == '') {
         errors++;
-        $('#end_location_error').html('please choose drop location')
+        $('#end_location_error').html(jsLabels['drop_location_required_validation'])
     }
 
     if (errors > 0)
@@ -58,18 +58,19 @@ function addReserve() {
 
     if (user_name == '') {
         errors++;
-        $('#user_name_error').html('Please enter your name')
+        $('#user_name_error').html(jsLabels['your_name_required_validation'])
     }
 
     if (user_phone == '') {
         errors++;
-        $('#user_phone_error').html('Please enter your phone number')
+        $('#user_phone_error').html(jsLabels['your_phone_number_required_validation'])
     }
 
     if (user_email == '') {
         errors++;
-        $('#user_email_error').html('Please enter your email')
+        $('#user_email_error').html(jsLabels['your_email_required_validation'])
     }
+
     if (errors > 0)
         return;
     //end
@@ -89,8 +90,8 @@ function addReserve() {
             'user_notes': user_notes
         },
         success: function (result) {
-            $('#pay_button').html('Pay');
-            showAlert('Your Booking Has Been Added Successfully', 'success');
+            $('#pay_button').html(jsLabels['add_reservation_success']);
+            showAlert(jsLabels['pay'], 'success');
             setTimeout(function () {
                 hideAlert('success');
             }, 10000);
@@ -98,8 +99,8 @@ function addReserve() {
             resetReservationForm();
         },
         error: function (result) {
-            $('#pay_button').html('Pay');
-            showAlert('There Is Something Wrong, Please Try Again', 'error');
+            $('#pay_button').html(jsLabels['back_error']);
+            showAlert(jsLabels['pay'], 'error');
             setTimeout(function () {
                 hideAlert('error');
             }, 10000);
@@ -128,17 +129,17 @@ function addMessage() {
 
     if (message_name == '') {
         errors++;
-        $('#message_name_error').html('Please enter your name');
+        $('#message_name_error').html(jsLabels['name_required_validation']);
     }
 
     if (message_phone == '') {
         errors++;
-        $('#message_phone_error').html('Please enter your phone number');
+        $('#message_phone_error').html(jsLabels['phone_number_required_validation']);
     }
 
     if (message_message == '') {
         errors++;
-        $('#message_message_error').html('Please enter your message');
+        $('#message_message_error').html(jsLabels['message_required_validation']);
     }
 
     if (errors > 0)
@@ -156,7 +157,7 @@ function addMessage() {
         success: function (result) {
             console.log(result);
             $('#send_button').html('Send');
-            showAlert('Your Message Has Been Added Successfully', 'success');
+            showAlert(jsLabels['add_message_success'], 'success');
             setTimeout(function () {
                 hideAlert('success');
             }, 10000);
@@ -167,7 +168,7 @@ function addMessage() {
         error: function (result) {
             console.log(result);
             $('#pay_button').html('Pay');
-            showAlert('There Is Something Wrong, Please Try Again', 'error');
+            showAlert(jsLabels['back_error'], 'error');
             setTimeout(function () {
                 hideAlert('error');
             }, 10000);
