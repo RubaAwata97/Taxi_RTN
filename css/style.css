@@ -140,7 +140,6 @@ a:focus {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-left: 3rem;
 }
 
 .navbar-brand span {

@@ -132,4 +132,8 @@
 	.container {
 		max-width: 1170px;
 	}
+
+	.navbar-brand {
+		margin-left: 3rem;
+	}
 }
