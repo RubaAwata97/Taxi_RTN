@@ -23,9 +23,7 @@
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="#">
-                        <span>
-                            TAXI
-                        </span>
+                        <img class="logo" src="images/header_logo.jpg">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -77,7 +75,7 @@
                                     <?php echo $labels['welcome_to'] ?>
                                 </h4>
                                 <h1>
-                                    TAXI
+                                    RTN TAXI
                                 </h1>
                             </div>
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -179,7 +177,7 @@
                     <div class="detail-box">
                         <h2>
                             <?php echo $labels['about'] ?> <br>
-                            Taxi <?php echo $labels['company'] ?>
+                            RTN Taxi <?php echo $labels['company'] ?>
                         </h2>
                         <p>
                             <?php echo $labels['about_description'] ?>

@@ -9,8 +9,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>TAXI</title>
-
+    <title>RTN TAXI</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.jpg">
 
     <!-- slider stylesheet -->
     <link rel="stylesheet" type="text/css"
