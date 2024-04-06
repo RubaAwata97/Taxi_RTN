@@ -91,7 +91,7 @@ function addReserve() {
         },
         success: function (result) {
             $('#pay_button').html(jsLabels['add_reservation_success']);
-            showAlert(jsLabels['pay'], 'success');
+            showAlert(jsLabels['add_reservation_success'], 'success');
             setTimeout(function () {
                 hideAlert('success');
             }, 10000);
@@ -155,7 +155,6 @@ function addMessage() {
             'message': message_message
         },
         success: function (result) {
-            console.log(result);
             $('#send_button').html('Send');
             showAlert(jsLabels['add_message_success'], 'success');
             setTimeout(function () {
@@ -166,8 +165,52 @@ function addMessage() {
             $('#message_message').val('');
         },
         error: function (result) {
-            console.log(result);
-            $('#pay_button').html('Pay');
+            $('#send_button').html('Pay');
+            showAlert(jsLabels['back_error'], 'error');
+            setTimeout(function () {
+                hideAlert('error');
+            }, 10000);
+        }
+    });
+    //end
+
+    /*---------------------------------------*/
+    //end
+}
+
+/*---------------------------------------*/
+function addSubscriber() {
+    //check form value errors
+    subscriber_email = $('#subscriber_email').val();
+    errors = 0;
+
+    if (subscriber_email == '') {
+        errors++;
+        $('#subscriber_email_error').html(jsLabels['your_email_required_validation']);
+    }
+
+    if (errors > 0)
+        return;
+    $('#add_subscriber_button').addClass('loading');
+    $('#add_subscriber_button').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>')
+    $.ajax({
+        url: "back/subscribeEmail.php",
+        type: 'POST',
+        data: {
+            'email': subscriber_email
+        },
+        success: function (result) {
+            $('#add_subscriber_button').html('');
+            $('#add_subscriber_button').removeClass('loading');
+            showAlert(jsLabels['add_subscriber_success'], 'success');
+            setTimeout(function () {
+                hideAlert('success');
+            }, 10000);
+            $('#subscriber_email').val('');
+        },
+        error: function (result) {
+            $('#add_subscriber_button').html('');
+            $('#add_subscriber_button').removeClass('loading');
             showAlert(jsLabels['back_error'], 'error');
             setTimeout(function () {
                 hideAlert('error');

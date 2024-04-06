@@ -10,7 +10,7 @@
                 <form action="">
                     <input id="subscriber_email" type="text" placeholder="<?php echo $labels['enter_your_email'] ?>">
                     <div class="d-flex justify-content-end">
-                        <button type="button" onclick="addSubscriber()">
+                        <button id="add_subscriber_button" type="button" onclick="addSubscriber()">
 
                         </button>
                     </div>

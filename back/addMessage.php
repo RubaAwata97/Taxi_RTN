@@ -8,9 +8,9 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'POST') {
     // Create operation (add a new book)
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $message = $_POST['message'];
+    $name = htmlentities($_POST['name']);
+    $phone = htmlentities($_POST['phone']);
+    $message = htmlentities($_POST['message']);
 
     $stmt = $pdo->prepare('INSERT INTO messages (name, phone, message) VALUES (?, ?, ?)');
     $stmt->execute([$name, $phone,  $message]);

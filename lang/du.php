@@ -74,5 +74,6 @@ $labels = array(
     "affordable_price_description" => "U kunt bij RTN Services rekenen op eerlijke en transparante ritprijzen. Al onze taxi's hebben gekeurde taxi meters daarnaast bieden we scherpe vaste tarieven aan vanaf Rotterdam e.o.",
     "subscribe_our_newsletter" => "Schrijf u in op onze nieuwsbrief",
     "all_rights_reserved" => "All Rights Reserved",
-    "enter_your_email" => "Voer uw e-mailadres in"
+    "enter_your_email" => "Voer uw e-mailadres in",
+    "add_subscriber_success" => "Uw e-mailadres is succesvol toegevoegd"
 );

@@ -887,6 +887,11 @@ a:focus {
     background-repeat: no-repeat;
 }
 
+.info_section .info_form form button.loading {
+    
+    background-image: unset;
+}
+
 .info_section .info_links ul {
     padding: 0;
     display: -webkit-box;

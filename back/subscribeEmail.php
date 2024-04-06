@@ -8,7 +8,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 if($method == 'POST') {
     // Create operation (add a new book)
-    $email = $_POST['email'];
+    $email = htmlentities($_POST['email']);
 
     //check if user exist
     $stmt = $pdo->prepare("SELECT * FROM subscribers WHERE email=? LIMIT 1"); 

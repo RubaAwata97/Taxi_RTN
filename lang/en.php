@@ -74,5 +74,6 @@ $labels = array(
     "affordable_price_description" => "At RTN Services you can count on fair and transparent fare prices. All our taxis have approved taxi meters and we also offer competitive fixed rates from Rotterdam and surrounding areas.",
     "subscribe_our_newsletter" => "Subscribe Our Newsletter",
     "all_rights_reserved" => "All Rights Reserved",
-    "enter_your_email" => "Enter your email"
+    "enter_your_email" => "Enter your email",
+    "add_subscriber_success" => "Your Email Has Been Added Successfully"
 );
