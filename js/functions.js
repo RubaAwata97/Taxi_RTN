@@ -1,3 +1,6 @@
+var emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+var phoneRegex = /^(0)?\d{10}$/;
+
 /*---------------------------------------*/
 function openFareModal() {
     //check form value errors
@@ -64,16 +67,31 @@ function addReserve() {
     if (user_phone == '') {
         errors++;
         $('#user_phone_error').html(jsLabels['your_phone_number_required_validation'])
+    } else {
+        if(!phoneRegex.test(user_phone)) {
+            errors++;
+            $('#user_phone_error').html(jsLabels['phone_number_regex_validation']);
+        }
     }
 
     if (user_email == '') {
         errors++;
-        $('#user_email_error').html(jsLabels['your_email_required_validation'])
+        $('#user_email_error').html(jsLabels['your_email_required_validation']); 
+
+    } else {
+        if(!emailRegex.test(user_email)) {
+            errors++;
+            $('#user_email_error').html(jsLabels['phone_email_regex_validation']);
+        }
     }
 
     if (errors > 0)
         return;
     //end
+    
+    $('#user_name_error').html('');
+    $('#user_phone_error').html('');
+    $('#user_email_error').html('');
 
     //add reserve
     $('#pay_button').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>')
@@ -90,7 +108,7 @@ function addReserve() {
             'user_notes': user_notes
         },
         success: function (result) {
-            $('#pay_button').html(jsLabels['add_reservation_success']);
+            $('#pay_button').html(jsLabels['pay']);
             showAlert(jsLabels['add_reservation_success'], 'success');
             setTimeout(function () {
                 hideAlert('success');
@@ -99,8 +117,8 @@ function addReserve() {
             resetReservationForm();
         },
         error: function (result) {
-            $('#pay_button').html(jsLabels['back_error']);
-            showAlert(jsLabels['pay'], 'error');
+            $('#pay_button').html(jsLabels['pay']);
+            showAlert(jsLabels['back_error'], 'error');
             setTimeout(function () {
                 hideAlert('error');
             }, 10000);
@@ -135,6 +153,11 @@ function addMessage() {
     if (message_phone == '') {
         errors++;
         $('#message_phone_error').html(jsLabels['phone_number_required_validation']);
+    } else {
+        if(!phoneRegex.test(message_phone)) {
+            errors++;
+            $('#message_phone_error').html(jsLabels['phone_number_regex_validation']);
+        }
     }
 
     if (message_message == '') {
@@ -144,6 +167,10 @@ function addMessage() {
 
     if (errors > 0)
         return;
+
+    $('#message_name_error').html('');
+    $('#message_phone_error').html('');
+    $('#message_message_error').html('');
 
     $('#send_button').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>')
     $.ajax({
@@ -187,12 +214,21 @@ function addSubscriber() {
     if (subscriber_email == '') {
         errors++;
         $('#subscriber_email_error').html(jsLabels['your_email_required_validation']);
+    } else {
+        if(!emailRegex.test(subscriber_email)) {
+            errors++;
+            $('#subscriber_email_error').html(jsLabels['phone_email_regex_validation']);
+        }
     }
 
     if (errors > 0)
         return;
+
+    $('#subscriber_email_error').html('');
+
     $('#add_subscriber_button').addClass('loading');
-    $('#add_subscriber_button').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>')
+    $('#add_subscriber_button').html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
+    
     $.ajax({
         url: "back/subscribeEmail.php",
         type: 'POST',

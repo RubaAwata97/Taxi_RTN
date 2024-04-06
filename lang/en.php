@@ -75,5 +75,7 @@ $labels = array(
     "subscribe_our_newsletter" => "Subscribe Our Newsletter",
     "all_rights_reserved" => "All Rights Reserved",
     "enter_your_email" => "Enter your email",
-    "add_subscriber_success" => "Your Email Has Been Added Successfully"
+    "add_subscriber_success" => "Your Email Has Been Added Successfully",
+    "phone_number_regex_validation" => "Your Phone Number Is Invalid",
+    "phone_email_regex_validation" => "Your Email Is Invalid"
 );

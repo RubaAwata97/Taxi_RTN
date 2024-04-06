@@ -75,5 +75,7 @@ $labels = array(
     "subscribe_our_newsletter" => "Schrijf u in op onze nieuwsbrief",
     "all_rights_reserved" => "All Rights Reserved",
     "enter_your_email" => "Voer uw e-mailadres in",
-    "add_subscriber_success" => "Uw e-mailadres is succesvol toegevoegd"
+    "add_subscriber_success" => "Uw e-mailadres is succesvol toegevoegd",
+    "phone_number_regex_validation" => "Uw telefoonnummer is ongeldig",
+    "phone_email_regex_validation" => "Uw e-mailadres is ongeldig"
 );
