@@ -559,6 +559,15 @@
 
     <script>
         var jsLabels = <?php echo json_encode( $labels ) ?>;
+
+        function initialize() {
+            var start_location_input = document.getElementById('start_location');
+            new google.maps.places.Autocomplete(start_location_input);
+            var end_location_input = document.getElementById('end_location');
+            new google.maps.places.Autocomplete(end_location_input);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 </body>
 
