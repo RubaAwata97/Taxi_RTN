@@ -1,6 +1,7 @@
 <?php
 /* AJAX */
 require_once 'config.php';
+require_once 'constants.php';
 // Set the content type to JSON
 header('Content-Type: application/json');
 // Handle HTTP methods
@@ -14,6 +15,13 @@ if($method == 'POST') {
 
     $stmt = $pdo->prepare('INSERT INTO messages (name, phone, message) VALUES (?, ?, ?)');
     $stmt->execute([$name, $phone,  $message]);
+
+    //Sending Email
+    $message = "New Problem";
+    $message .= "\r\nName:  " . $name;
+    $message .= "\r\nPhone:  " . $phone;
+    $message .= "\r\nMessage:  " . $message;
+    mail($admin_email,"New Problem Message", $message);
 
     echo json_encode(['message' => 'message added successfully']);
 } else {

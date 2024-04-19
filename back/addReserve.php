@@ -1,6 +1,7 @@
 <?php
 /* AJAX */
 require_once 'config.php';
+require_once 'constants.php';
 // Set the content type to JSON
 header('Content-Type: application/json');
 // Handle HTTP methods
@@ -30,6 +31,17 @@ if($method == 'POST') {
 
     $stmt = $pdo->prepare('INSERT INTO bookings (location_a, location_b, notes, user_id, service_type_id, status) VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute([$start_location, $end_location, $user_notes, $user_id, $service_type, 'pending']);
+
+    //Sending Email
+    $message = "New Reserve";
+    $message .= "\r\nService Type:  " . $service_type;
+    $message .= "\r\nStart Location:  " . $start_location;
+    $message .= "\r\nEnd Location:  " . $end_location;
+    $message .= "\r\nUser Name:  " . $user_name;
+    $message .= "\r\nUser Phone:  " . $user_phone;
+    $message .= "\r\nUser Email:  " . $user_email;
+    $message .= "\r\nUser Note:  " . $user_notes;
+    mail($admin_email,"New Reserve", $message);
 
     echo json_encode(['message' => 'Booking added successfully']);
 } else {

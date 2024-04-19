@@ -1,6 +1,7 @@
 <?php
 /* AJAX */
 require_once 'config.php';
+require_once 'constants.php';
 // Set the content type to JSON
 header('Content-Type: application/json');
 // Handle HTTP methods
@@ -18,6 +19,10 @@ if($method == 'POST') {
         $stmt = $pdo->prepare('INSERT INTO subscribers (email) VALUES (?)');
         $stmt->execute([$email]);
     }
+
+    //Sending Email
+    $message= "New Subscriber Email is: " . $email;
+    mail($admin_email,"New Subscriber", $message);
 
     echo json_encode(['message' => 'Email added successfully']);
 } else {

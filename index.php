@@ -1,4 +1,5 @@
 <?php include 'back/data.php' ?>
+<?php include 'back/constants.php' ?>
 <?php
     session_start();
 
@@ -150,13 +151,13 @@
                             </h4>
                             <div class="book-form__call-us-buttons">
                                 <div class="book-form__call-us-buttons-item">
-                                    <a href="tel:01008434175"><i class="fa-solid fa-phone"></i></a>
+                                    <a href="tel:<?php echo $admin_phone?>"><i class="fa-solid fa-phone"></i></a>
                                 </div>
                                 <div class="book-form__call-us-buttons-item">
-                                    <a href="mailto:someone@example.com"><i class="fa-solid fa-envelope"></i></a>
+                                    <a href="mailto:<?php echo $admin_email?>"><i class="fa-solid fa-envelope"></i></a>
                                 </div>
                                 <div class="book-form__call-us-buttons-item">
-                                    <a href="whatsapp://send?abid=+201008434175"><i class="fab fa-whatsapp"></i></a>
+                                    <a href="whatsapp://send?abid=<?php echo $admin_whatsapp?>"><i class="fab fa-whatsapp"></i></a>
                                 </div>
                             </div>
                         </div>
