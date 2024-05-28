@@ -76,4 +76,4 @@
 <!-- footer section -->
 
 <!-- Float Buttons -->
-<a class="click-to-call" href="tel:01008434175"><i class="fa-solid fa-phone"></i></a>
+<a class="click-to-call" href="tel:<?php echo $admin_phone?>"><i class="fa-solid fa-phone"></i></a>
