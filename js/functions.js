@@ -7,6 +7,7 @@ function openFareModal() {
     service_type = $('#service_type').val();
     start_location = $('#start_location').val();
     end_location = $('#end_location').val();
+    
     errors = 0;
     if (service_type == null || service_type == '') {
         errors++;
@@ -36,9 +37,12 @@ function openFareModal() {
     $.ajax({
         url: "back/calcFare.php",
         data: {
-            'service_type': service_type
+            'service_type': service_type,
+            'location_a': start_location,
+            'location_b': end_location
         },
         success: function (result) {
+            console.log("result:", result);
             $("#fare_value").html(result);
         }
     });

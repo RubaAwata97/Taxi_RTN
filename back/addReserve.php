@@ -32,7 +32,7 @@ if($method == 'POST') {
     $stmt = $pdo->prepare('INSERT INTO bookings (location_a, location_b, notes, user_id, service_type_id, status) VALUES (?, ?, ?, ?, ?, ?)');
     $stmt->execute([$start_location, $end_location, $user_notes, $user_id, $service_type, 'pending']);
 
-    //Sending Email
+    //Sending Email To Admin
     $message = "New Reserve";
     $message .= "\r\nService Type:  " . $service_type;
     $message .= "\r\nStart Location:  " . $start_location;
@@ -42,6 +42,22 @@ if($method == 'POST') {
     $message .= "\r\nUser Email:  " . $user_email;
     $message .= "\r\nUser Note:  " . $user_notes;
     mail($admin_email,"New Reserve", $message);
+
+    //Sending Email To User
+    /*$message = `
+            <div id="email-wrap" style='background: #151515;color: #FFF;'>
+            <p>Hi,</p><br>
+            <p>Thank you.</p><br>
+            <p>Thank you,</p>
+            <p>Administration</p>
+            </div>
+    `;
+
+    // To send HTML mail, the Content-type header must be set
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+    mail($user_email,"New Reserve", $message, $headers);*/
 
     echo json_encode(['message' => 'Booking added successfully']);
 } else {

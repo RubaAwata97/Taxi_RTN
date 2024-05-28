@@ -33,5 +33,5 @@
     <link href="css/responsive.css" rel="stylesheet" />
 
     <!-- Google map -->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHp-xRducq7qOCb8hSHvN6oxQgXcc9cSc&v=3.exp&sensor=false&libraries=places"></script>
 </head>
