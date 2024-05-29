@@ -77,5 +77,7 @@ $labels = array(
     "enter_your_email" => "Voer uw e-mailadres in",
     "add_subscriber_success" => "Uw e-mailadres is succesvol toegevoegd",
     "phone_number_regex_validation" => "Uw telefoonnummer is ongeldig",
-    "phone_email_regex_validation" => "Uw e-mailadres is ongeldig"
+    "phone_email_regex_validation" => "Uw e-mailadres is ongeldig",
+    "date" => "Datum",
+    "date_required_validation" => "Kies een datum"
 );

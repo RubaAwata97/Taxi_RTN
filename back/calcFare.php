@@ -30,7 +30,8 @@ if ($method == 'GET') {
     // print_r($response);
     $distance = ($response_all->routes[0]->legs[0]->distance->value) / 1000; // KM
     
-    echo json_encode($fare * $distance);
+    $fare = round($fare * $distance);
+    echo json_encode($fare);
 } else {
     // Invalid method
     http_response_code(405);

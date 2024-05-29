@@ -16,10 +16,11 @@ if($method == 'POST') {
     $user_phone = htmlentities($_POST['user_phone']);
     $user_email = htmlentities($_POST['user_email']);
     $user_notes = htmlentities($_POST['user_notes']);
+    $date = htmlentities($_POST['date']);
 
     //check if user exist
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE name=? & phone=? & email=? LIMIT 1"); 
-    $stmt->execute([$user_name, $user_phone, $user_email]); 
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email=? LIMIT 1"); 
+    $stmt->execute([$user_email]); 
     $user = $stmt->fetch();
     if(!$user) {
         $stmt = $pdo->prepare('INSERT INTO users (name, phone, email) VALUES (?, ?, ?)');
@@ -29,8 +30,8 @@ if($method == 'POST') {
         $user_id = $user['id'];
     }
 
-    $stmt = $pdo->prepare('INSERT INTO bookings (location_a, location_b, notes, user_id, service_type_id, status) VALUES (?, ?, ?, ?, ?, ?)');
-    $stmt->execute([$start_location, $end_location, $user_notes, $user_id, $service_type, 'pending']);
+    $stmt = $pdo->prepare('INSERT INTO bookings (location_a, location_b, notes, user_id, service_type_id, booking_date, status) VALUES (?, ?, ?, ?, ?, ?, ?)');
+    $stmt->execute([$start_location, $end_location, $user_notes, $user_id, $service_type, $date, 'pending']);
 
     //Sending Email To Admin
     $message = "New Reserve";

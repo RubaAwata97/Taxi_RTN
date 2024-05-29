@@ -7,6 +7,7 @@ function openFareModal() {
     service_type = $('#service_type').val();
     start_location = $('#start_location').val();
     end_location = $('#end_location').val();
+    date = $('#date').val();
     
     errors = 0;
     if (service_type == null || service_type == '') {
@@ -22,6 +23,11 @@ function openFareModal() {
     if (end_location == '') {
         errors++;
         $('#end_location_error').html(jsLabels['drop_location_required_validation'])
+    }
+
+    if (date == '') {
+        errors++;
+        $('#date_error').html(jsLabels['date_required_validation'])
     }
 
     if (errors > 0)
@@ -42,7 +48,6 @@ function openFareModal() {
             'location_b': end_location
         },
         success: function (result) {
-            console.log("result:", result);
             $("#fare_value").html(result);
         }
     });
@@ -61,6 +66,8 @@ function addReserve() {
     user_phone = $('#user_phone').val();
     user_email = $('#user_email').val();
     user_notes = $('#user_notes').val();
+    date = $('#date').val();
+
     errors = 0;
 
     if (user_name == '') {
@@ -109,7 +116,8 @@ function addReserve() {
             'user_name': user_name,
             'user_phone': user_phone,
             'user_email': user_email,
-            'user_notes': user_notes
+            'user_notes': user_notes,
+            'date': date
         },
         success: function (result) {
             $('#pay_button').html(jsLabels['pay']);

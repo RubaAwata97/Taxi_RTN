@@ -77,5 +77,7 @@ $labels = array(
     "enter_your_email" => "Enter your email",
     "add_subscriber_success" => "Your Email Has Been Added Successfully",
     "phone_number_regex_validation" => "Your Phone Number Is Invalid",
-    "phone_email_regex_validation" => "Your Email Is Invalid"
+    "phone_email_regex_validation" => "Your Email Is Invalid",
+    "date" => "Date",
+    "date_required_validation" => "Please choose date"
 );

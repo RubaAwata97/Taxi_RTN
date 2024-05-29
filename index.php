@@ -4,7 +4,7 @@
     session_start();
 
     $lang = 'en';
-    if(isset($_GET['lang']))
+    if(isset($_GET['lang']) && in_array($_GET['lang'], ['en', 'du']))
         $lang = $_GET['lang'];
         
     $_SESSION['lang'] = $lang;
@@ -142,6 +142,10 @@
                             <div class="custom-input-div">
                                 <input class="custom-input" id="end_location" type="text" placeholder="<?php echo $labels['drop_location'] ?>">
                                 <small id="end_location_error" class="error"></small>
+                            </div>
+                            <div class="custom-input-div">
+                                <input class="custom-input" id="date" type="datetime-local" placeholder="<?php echo $labels['date'] ?>">
+                                <small id="date_error" class="error"></small>
                             </div>
                             <div class="btm_input">
                                 <button class="primary_btn" type="button" onclick="openFareModal()"><?php echo $labels['book_now'] ?></button>
