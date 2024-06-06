@@ -5,8 +5,10 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!-- Site Metas -->
-    <meta name="keywords" content="Taxi Rotterdam, Goedkope taxi Rotterdam, Snelle taxi Rotterdam, Taxi reserveren Rotterdam, Rotterdam luchthaven taxi, Betrouwbare taxi Rotterdam, 24/7 taxidienst Rotterdam, Taxi Rotterdam centrum, Luchthaven transfer Rotterdam, Jouw taxi Rotterdam" />
-    <meta name="description" content="Bij Taxi Rotterdam RTN bieden we betrouwbare en betaalbare vervoersoplossingen. Onze goed opgeleide medewerkers zorgen voor een uitstekende service en komen altijd op tijd. Of u nu een rit naar het vliegveld nodig heeft of een taxi in het stadscentrum, wij staan 24/7 voor u klaar. Kies voor Taxi Rotterdam RTN voor een zorgeloze en comfortabele reis." />
+    <meta name="keywords"
+        content="Taxi Rotterdam, Goedkope taxi Rotterdam, Snelle taxi Rotterdam, Taxi reserveren Rotterdam, Rotterdam luchthaven taxi, Betrouwbare taxi Rotterdam, 24/7 taxidienst Rotterdam, Taxi Rotterdam centrum, Luchthaven transfer Rotterdam, Jouw taxi Rotterdam" />
+    <meta name="description"
+        content="Bij Taxi Rotterdam RTN bieden we betrouwbare en betaalbare vervoersoplossingen. Onze goed opgeleide medewerkers zorgen voor een uitstekende service en komen altijd op tijd. Of u nu een rit naar het vliegveld nodig heeft of een taxi in het stadscentrum, wij staan 24/7 voor u klaar. Kies voor Taxi Rotterdam RTN voor een zorgeloze en comfortabele reis." />
     <meta name="author" content="" />
 
     <title>Taxi Rotterdam RTN</title>
@@ -33,9 +35,9 @@
     <link href="css/responsive.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    
+
     <!-- Google map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHp-xRducq7qOCb8hSHvN6oxQgXcc9cSc&v=3.exp&sensor=false&libraries=places"></script>
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>

@@ -149,6 +149,7 @@ function resetReservationForm() {
     $('#user_phone').val('');
     $('#user_email').val('');
     $('#user_notes').val('');
+    $('#date').val('');
 }
 
 /*---------------------------------------*/

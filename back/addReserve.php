@@ -41,12 +41,18 @@ if ($method == 'POST') {
     $stmt->execute([$start_location, $end_location, $user_notes, $user_id, $service_type, $date, $fare, 'pending']);
 
     //Sending Email To Admin
+    $stmt = $pdo->prepare("SELECT * FROM service_types WHERE id=? LIMIT 1");
+    $stmt->execute([$service_type]);
+    $service_type_name = $stmt->fetch();
+
+    $service_type_name = $service_type_name['name_en'];
+
     $message = "New Reserve";
-    $message .= "\r\nService Type:  " . $service_type;
+    $message .= "\r\nService Type:  " . $service_type_name;
     $message .= "\r\nStart Location:  " . $start_location;
     $message .= "\r\nEnd Location:  " . $end_location;
     $message .= "\r\nBooking Date:  " . $date;
-    $message .= "\r\nFare:  " . $fare;
+    $message .= "\r\nFare:  " . $fare . " €";
     $message .= "\r\nUser Name:  " . $user_name;
     $message .= "\r\nUser Phone:  " . $user_phone;
     $message .= "\r\nUser Email:  " . $user_email;
@@ -126,7 +132,7 @@ if ($method == 'POST') {
                         <td valign="top" align="center" style="padding:0;Margin:0;width:560px">
                         <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                             <tr>
-                            <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Hey there, ' . $user_name .'! It looks like you recently reserved a new trip. We wanted to thank you for choosing us,</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">your reservation info is:</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Start Location: ' . $start_location . '</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">End Location: ' . $end_location . '</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Date: ' . $date . '</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Fare: ' . $fare . '</p></td>
+                            <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Hey there, ' . $user_name .'! It looks like you recently reserved a new trip. We wanted to thank you for choosing us,</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">your reservation info is:</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Start Location: ' . $start_location . '</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">End Location: ' . $end_location . '</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Date: ' . $date . '</p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, "helvetica neue", helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Fare: ' . $fare . ' €</p></td>
                             </tr>
                         </table></td>
                         </tr>

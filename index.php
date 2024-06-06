@@ -144,7 +144,7 @@
                                 <small id="end_location_error" class="error"></small>
                             </div>
                             <div class="custom-input-div">
-                                <input class="custom-input datetime" id="date" type="datetime-local" placeholder="<?php echo $labels['date'] ?>">
+                                <input class="custom-input datetime" id="date"  placeholder="<?php echo $labels['date'] ?>">
                                 <small id="date_error" class="error"></small>
                             </div>
                             <div class="btm_input">
@@ -530,7 +530,7 @@
                     <div class="reservation-fare">
                         <h2 class="m-0">
                             <span class="reservation-fare__label"><?php echo $labels['fare'] ?>:</span>
-                            <span class="reservation-fare__value" id="fare_value"></span><span class="reservation-fare__value">$</span>
+                            <span class="reservation-fare__value" id="fare_value"></span><span class="reservation-fare__value">€</span>
                         </h2>
                     </div>
                     <div class="custom-input-div">
@@ -573,6 +573,14 @@
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+    <script>
+        // Target the input element by using jQuery and then call the kendoDatePicker() method.
+        $("#date").datetimepicker({
+            // Add some basic configuration.
+            value: new Date(2022, 0, 3)
+        });
     </script>
 </body>
 
