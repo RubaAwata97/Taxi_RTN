@@ -3,7 +3,7 @@
 <?php
     session_start();
 
-    $lang = 'en';
+    $lang = 'du';
     if(isset($_GET['lang']) && in_array($_GET['lang'], ['en', 'du']))
         $lang = $_GET['lang'];
         
@@ -76,7 +76,7 @@
                                     <?php echo $labels['welcome_to'] ?>
                                 </h4>
                                 <h1>
-                                    RTN TAXI
+                                    Taxi Rotterdam RTN
                                 </h1>
                             </div>
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -144,7 +144,7 @@
                                 <small id="end_location_error" class="error"></small>
                             </div>
                             <div class="custom-input-div">
-                                <input class="custom-input" id="date" type="datetime-local" placeholder="<?php echo $labels['date'] ?>">
+                                <input class="custom-input datetime" id="date" type="datetime-local" placeholder="<?php echo $labels['date'] ?>">
                                 <small id="date_error" class="error"></small>
                             </div>
                             <div class="btm_input">
@@ -182,7 +182,7 @@
                     <div class="detail-box">
                         <h2>
                             <?php echo $labels['about'] ?> <br>
-                            RTN Taxi <?php echo $labels['company'] ?>
+                            Taxi Rotterdam RTN <?php echo $labels['company'] ?>
                         </h2>
                         <p>
                             <?php echo $labels['about_description'] ?>
@@ -530,7 +530,7 @@
                     <div class="reservation-fare">
                         <h2 class="m-0">
                             <span class="reservation-fare__label"><?php echo $labels['fare'] ?>:</span>
-                            <span class="reservation-fare__value" id="fare_value">50</span><span class="reservation-fare__value">$</span>
+                            <span class="reservation-fare__value" id="fare_value"></span><span class="reservation-fare__value">$</span>
                         </h2>
                     </div>
                     <div class="custom-input-div">

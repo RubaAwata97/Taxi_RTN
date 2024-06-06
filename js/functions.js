@@ -67,6 +67,7 @@ function addReserve() {
     user_email = $('#user_email').val();
     user_notes = $('#user_notes').val();
     date = $('#date').val();
+    fare = $('#fare_value').html();
 
     errors = 0;
 
@@ -117,7 +118,8 @@ function addReserve() {
             'user_phone': user_phone,
             'user_email': user_email,
             'user_notes': user_notes,
-            'date': date
+            'date': date,
+            'fare': fare
         },
         success: function (result) {
             $('#pay_button').html(jsLabels['pay']);

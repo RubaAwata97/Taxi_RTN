@@ -3,7 +3,9 @@
 <script type="text/javascript" src="js/alerts.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+
 </script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <!-- owl carousel script -->
 <script type="text/javascript">
@@ -26,5 +28,7 @@
             }
         }
     });
+
+    $(".datetime").flatpickr(optional_config);
 </script>
 <!-- end owl carousel script -->

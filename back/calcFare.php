@@ -15,7 +15,9 @@ if ($method == 'GET') {
     $stmt->execute([$service_type_id]);
     $service_type = $stmt->fetch();
 
-    $fare = $service_type['fare'];
+    $basic_fare = $service_type['basic_fare'];
+    $distance_fare	 = $service_type['distance_fare'];
+    $duration_fare = $service_type['duration_fare'];
 
     $url = "https://maps.googleapis.com/maps/api/directions/json?key=AIzaSyDHp-xRducq7qOCb8hSHvN6oxQgXcc9cSc&origin=" . str_replace(' ', '+', $location_a) . "&destination=" . str_replace(' ', '+', $location_b) . "&sensor=false";
     $ch = curl_init();
@@ -29,8 +31,9 @@ if ($method == 'GET') {
     $response_all = json_decode($response);
     // print_r($response);
     $distance = ($response_all->routes[0]->legs[0]->distance->value) / 1000; // KM
+    $duration = ($response_all->routes[0]->legs[0]->duration->value) / 60; // minute
     
-    $fare = round($fare * $distance);
+    $fare = round($basic_fare + $distance * $distance_fare + $duration * $duration_fare);
     echo json_encode($fare);
 } else {
     // Invalid method
