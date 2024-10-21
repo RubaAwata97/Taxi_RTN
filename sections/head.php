@@ -1,4 +1,8 @@
 <head>
+
+
+     <meta name="google-site-verification" content="yxbC4onf9VQEQMFVSycUaGe1TaeLACMynkmP3jHTdAs" />
+     
     <!-- Basic -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

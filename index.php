@@ -13,6 +13,7 @@
 ?>
 <!DOCTYPE html>
 <html>
+   
 
 <?php include 'sections/head.php' ?>
 
@@ -129,7 +130,13 @@
                                     <option value="" disabled selected><?php echo $labels['service_type'] ?></option>
                                     <?php foreach($service_types as $service_type) {?>
                                         <option value="<?php echo $service_type['id'] ?>">
-                                            <?php echo $service_type['name_en'] ?>
+                                            <?php 
+                                            if($lang == "en")
+                                             echo $service_type['name_en'];
+                                             else{
+                                                echo $service_type['name_du'];
+                                             } 
+                                             ?>
                                         </option>
                                     <?php } ?>
                                 </select>
